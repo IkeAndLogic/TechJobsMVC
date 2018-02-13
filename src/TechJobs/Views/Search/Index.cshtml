@@ -1,4 +1,11 @@
-﻿<h1>@ViewBag.title</h1>
+﻿
+@*<head>
+    <link rel="stylesheet" href="~/css/tableStyleSheet.css" />
+</head>*@
+
+
+
+<h1>@ViewBag.title</h1>
 
 <form action="/Search/Results">
     <h2>Search by:</h2>
@@ -33,4 +40,24 @@
     <h3>@ViewBag.jobs.Count Result(s)</h3>
 
     // TODO #2 - Loop over jobs dictionary and display all job fields 
-}
+
+        @foreach (Dictionary<string, string> jobGroup in ViewBag.jobs)
+        { 
+            <table class=" job-listing">
+            @foreach (KeyValuePair<string, string> jobItem in jobGroup)
+            {
+
+                <tr>
+                <td> @jobItem.Key:</td>
+                <td> @jobItem.Value </td>
+                    </tr>
+            }
+           
+            </table>
+        }
+
+
+
+
+
+        }
